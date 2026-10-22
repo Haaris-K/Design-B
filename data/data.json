@@ -1,0 +1,101 @@
+{
+  "movies": [
+    {
+      "id": "m1",
+      "title": "Crystal Horizon",
+      "genre": "Sci-Fi",
+      "placeholder": "[ Poster: Diamond ]"
+    },
+    {
+      "id": "m2",
+      "title": "Stick Runner",
+      "genre": "Comedy",
+      "placeholder": "[ Poster: Figure ]"
+    },
+    {
+      "id": "m3",
+      "title": "Chain Reaction",
+      "genre": "Thriller",
+      "placeholder": "[ Poster: Circles ]"
+    },
+    {
+      "id": "m4",
+      "title": "Happy Days",
+      "genre": "Animation",
+      "placeholder": "[ Poster: Smiley ]"
+    },
+    {
+      "id": "m5",
+      "title": "Starlight Quest",
+      "genre": "Fantasy",
+      "placeholder": "[ Poster: Star ]"
+    },
+    {
+      "id": "m6",
+      "title": "The Web",
+      "genre": "Mystery",
+      "placeholder": "[ Poster: Web ]"
+    },
+    {
+      "id": "m7",
+      "title": "Speed Wings",
+      "genre": "Action",
+      "placeholder": "[ Poster: Wing ]"
+    },
+    {
+      "id": "m8",
+      "title": "The Cloaked One",
+      "genre": "Drama",
+      "placeholder": "[ Poster: Cloak ]"
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc-1",
+      "name": "Downtown Cinema",
+      "detail": "Auditorium 1"
+    },
+    {
+      "id": "loc-2",
+      "name": "West End Mall",
+      "detail": "Auditorium 4"
+    },
+    {
+      "id": "loc-3",
+      "name": "North Centre",
+      "detail": "Auditorium 2"
+    },
+    {
+      "id": "loc-4",
+      "name": "Valley Plaza",
+      "detail": "Auditorium 6"
+    }
+  ],
+  "times": [
+    {
+      "id": "t1",
+      "time": "1:00 PM",
+      "type": "Matinee"
+    },
+    {
+      "id": "t2",
+      "time": "3:30 PM",
+      "type": "Regular"
+    },
+    {
+      "id": "t3",
+      "time": "6:15 PM",
+      "type": "Prime"
+    },
+    {
+      "id": "t4",
+      "time": "8:45 PM",
+      "type": "Prime"
+    },
+    {
+      "id": "t5",
+      "time": "11:00 PM",
+      "type": "Late Night"
+    }
+  ]
+}

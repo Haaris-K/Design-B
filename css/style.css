@@ -1,0 +1,525 @@
+/* 
+  Mid-Fidelity Wireframe Stylesheet - Design D
+  Strictly Monochrome / Grayscale (no colors, no external visuals)
+  Simple, clean CSS for student prototype
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222222;
+  line-height: 1.4;
+  padding: 20px;
+}
+
+/* Prototype Container */
+.wireframe-container {
+  max-width: 950px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 2px solid #333333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Header (present across all 3 steps) */
+.wireframe-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 2px solid #333333;
+  background-color: #ffffff;
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+.menu-icon {
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.brand-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333333;
+  border-radius: 50%;
+  position: relative;
+}
+
+.brand-icon::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #333333;
+  border-radius: 50%;
+}
+
+.nav-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nav-line {
+  width: 28px;
+  height: 3px;
+  background-color: #777777;
+}
+
+/* 3-Step Navigation Bar */
+.stepper-nav {
+  display: flex;
+  border-bottom: 2px solid #333333;
+  background-color: #eeeeee;
+}
+
+.step-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-right: 1px solid #cccccc;
+  cursor: pointer;
+  color: #666666;
+  transition: all 0.15s ease;
+}
+
+.step-tab:last-child {
+  border-right: none;
+}
+
+.step-tab.active {
+  background-color: #ffffff;
+  color: #000000;
+  border-bottom: 3px solid #000000;
+}
+
+.step-tab:hover:not(.active) {
+  background-color: #e2e2e2;
+}
+
+/* Step Views */
+.step-view {
+  display: none;
+  padding: 20px;
+}
+
+.step-view.active {
+  display: block;
+}
+
+/* Two Column Split (Matching Sketch D Panels) */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+/* Panel Containers */
+.wireframe-panel {
+  border: 2px solid #333333;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-bottom: 2px solid #333333;
+  background-color: #f7f7f7;
+}
+
+.panel-content {
+  padding: 14px;
+  flex: 1;
+}
+
+/* STEP 1: Movie Grid (8 items in 2x4 layout) */
+.movie-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.movie-card {
+  border: 1px solid #444444;
+  padding: 8px 6px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: all 0.15s ease;
+}
+
+.movie-card:hover {
+  background-color: #f0f0f0;
+}
+
+.movie-card.selected {
+  outline: 2px solid #000000;
+  background-color: #e5e5e5;
+  font-weight: bold;
+}
+
+.poster-placeholder-box {
+  width: 100%;
+  height: 70px;
+  border: 1px dashed #777777;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #555555;
+  margin-bottom: 6px;
+  line-height: 1.1;
+  padding: 4px;
+}
+
+.movie-title {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* STEP 1: Location List (4 items with pin) */
+.selection-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selection-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #dddddd;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.selection-item:last-child {
+  border-bottom: none;
+}
+
+.selection-item:hover {
+  background-color: #f2f2f2;
+}
+
+.selection-item.selected {
+  background-color: #e5e5e5;
+  font-weight: 600;
+}
+
+.selection-icon {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #555555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+}
+
+.selection-title {
+  font-size: 13px;
+}
+
+.selection-sub {
+  font-size: 11px;
+  color: #666666;
+}
+
+/* STEP 2: Seat Grid */
+.screen-wireframe {
+  width: 80%;
+  margin: 0 auto 16px auto;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-bottom: 3px solid #000000;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background-color: #f8f8f8;
+}
+
+.seating-chart {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  justify-items: center;
+  margin-bottom: 16px;
+}
+
+/* Dome-shaped cinema seats from sketch */
+.seat {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #333333;
+  border-radius: 6px 6px 2px 2px;
+  background-color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #555555;
+  user-select: none;
+  transition: all 0.1s;
+}
+
+.seat:hover:not(.occupied) {
+  background-color: #dddddd;
+}
+
+.seat.selected {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* Occupied seats (drawn shaded/darkened in sketch) */
+.seat.occupied {
+  background-color: #777777;
+  border-color: #555555;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.seat-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  font-size: 11px;
+  padding-top: 10px;
+  border-top: 1px dashed #cccccc;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #333333;
+  border-radius: 3px 3px 1px 1px;
+}
+
+.legend-swatch.available { background-color: #ffffff; }
+.legend-swatch.occupied { background-color: #777777; }
+.legend-swatch.selected { background-color: #000000; }
+
+/* STEP 3: Login & Payment Details */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.wireframe-input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #444444;
+  background-color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+.wireframe-input:focus {
+  border-color: #000000;
+  outline: 2px solid #000000;
+}
+
+/* Login full-width button in sketch */
+.btn-login-action {
+  width: 100%;
+  padding: 11px;
+  margin-top: 10px;
+  border: 2px solid #333333;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-login-action:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Payment Layout matching sketch: 2 inputs on top, 1 full input below, then shopping cart button */
+.payment-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* Shopping Cart Checkout Button from sketch */
+.btn-cart-checkout {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-cart-checkout:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.cart-icon {
+  font-size: 20px;
+}
+
+/* Summary Bar */
+.booking-summary-bar {
+  padding: 10px 14px;
+  background-color: #f7f7f7;
+  border: 1px dashed #666666;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Step Action Navigation */
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #dddddd;
+}
+
+.wireframe-btn {
+  padding: 9px 16px;
+  border: 2px solid #333333;
+  background-color: #ffffff;
+  color: #222222;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.wireframe-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.wireframe-btn.primary {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+.wireframe-btn.primary:hover {
+  background-color: #000000;
+}
+
+/* Confirmation Box */
+.confirmation-box {
+  display: none;
+  margin-top: 16px;
+  padding: 16px;
+  border: 2px solid #222222;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.confirmation-box.active {
+  display: block;
+}
+
+.confirmation-box h3 {
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+  body {
+    padding: 8px;
+  }
+
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seating-chart {
+    gap: 4px;
+  }
+
+  .seat {
+    width: 22px;
+    height: 22px;
+    font-size: 8px;
+  }
+}

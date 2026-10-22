@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cineplex Wireframe Prototype - Design D</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+</head>
+
+<body>
+
+  <!-- ==================================================================== -->
+  <!-- USABILITY TESTING TOOLBAR (FOR RECORDING PARTICIPANT SESSIONS)        -->
+  <!-- ==================================================================== -->
+  <aside class="testing-bar" aria-label="Usability Testing Controller">
+    <div class="testing-bar-inner">
+      <div class="testing-info">
+        <span class="testing-badge">🧪 Testing Mode</span>
+        <label for="tester-select" class="testing-label">Participant:</label>
+        <select id="tester-select" class="testing-select">
+          <option value="User 1">User 1</option>
+          <option value="User 2">User 2</option>
+          <option value="User 3">User 3</option>
+          <option value="User 4">User 4</option>
+        </select>
+        <span class="testing-timer" id="testing-timer">⏱ 00:00</span>
+        <span class="testing-status" id="testing-status">Status: Ready</span>
+      </div>
+      <div class="testing-actions">
+        <button type="button" class="btn-testing" id="btn-start-test">Start Test</button>
+        <button type="button" class="btn-testing" id="btn-reset-test">Reset</button>
+        <button type="button" class="btn-testing btn-testing-primary" id="btn-view-analytics">
+          📊 View Analytics (<span id="saved-sessions-count">0</span>)
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Notification Banner when a test run is saved -->
+  <div class="testing-notification" id="testing-notification">
+    <span id="testing-notif-message">✓ Test run recorded!</span>
+    <button type="button" class="testing-notification-close" id="testing-notif-close" title="Dismiss">&times;</button>
+  </div>
+
+  <!-- Wireframe Device / Container -->
+  <div class="wireframe-container">
+
+    <!-- Global Header (present on all 3 steps) -->
+    <header class="wireframe-header">
+      <div class="header-left">
+        <span class="menu-icon" title="Menu">☰</span>
+      </div>
+      <div class="header-brand">
+        <span class="brand-icon"></span>
+        <span>CINEPLEX</span>
+      </div>
+      <div class="header-right">
+        <div class="nav-lines">
+          <div class="nav-line"></div>
+          <div class="nav-line"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 3-Step Navigation Tabs -->
+    <nav class="stepper-nav">
+      <button type="button" class="step-tab active" data-step="1">Movie &amp; Location</button>
+      <button type="button" class="step-tab" data-step="2">Seat &amp; Time</button>
+      <button type="button" class="step-tab" data-step="3">Login &amp; Payment</button>
+    </nav>
+
+    <!-- ============================================== -->
+    <!-- STEP 1: Movie (8-grid) & Location (4-list)     -->
+    <!-- ============================================== -->
+    <section class="step-view active" data-step="1" id="step-1">
+      <div class="two-column-layout">
+
+        <!-- Left Panel: Movie (2 rows x 4 columns) -->
+        <div class="wireframe-panel">
+          <div class="panel-title">Movie</div>
+          <div class="panel-content">
+            <div class="movie-grid-8" id="movie-grid-8">
+              <!-- Rendered from JSON: 8 movie poster cards -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Location (4 items) -->
+        <div class="wireframe-panel">
+          <div class="panel-title">Location</div>
+          <div class="panel-content">
+            <ul class="selection-list" id="location-list">
+              <!-- Rendered from JSON: 4 location items -->
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live Selection Status -->
+      <div class="booking-summary-bar">
+        <div><strong>Movie:</strong> <span class="sum-movie">(None selected)</span></div>
+        <div><strong>Location:</strong> <span class="sum-loc">(None selected)</span></div>
+      </div>
+
+      <!-- Step 1 Bottom Action -->
+      <div class="step-actions">
+        <span>Click a movie card and a location to select</span>
+        <button type="button" class="wireframe-btn primary" id="btn-to-step2">Next: Seat &amp; Time &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 2: Seat (Grid) & Time (5-list)            -->
+    <!-- ============================================== -->
+    <section class="step-view" data-step="2" id="step-2">
+      <div class="two-column-layout">
+
+        <!-- Left Panel: Seat Picker -->
+        <div class="wireframe-panel">
+          <div class="panel-title">Seat</div>
+          <div class="panel-content">
+            <div class="screen-wireframe">[ SCREEN ]</div>
+
+            <!-- 6 rows x 8 columns seating grid -->
+            <div class="seating-chart" id="seating-chart"></div>
+
+            <!-- Seat Legend -->
+            <div class="seat-legend">
+              <div class="legend-item">
+                <span class="legend-swatch available"></span> Available
+              </div>
+              <div class="legend-item">
+                <span class="legend-swatch occupied"></span> Occupied
+              </div>
+              <div class="legend-item">
+                <span class="legend-swatch selected"></span> Selected
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Time (5 showtimes) -->
+        <div class="wireframe-panel">
+          <div class="panel-title">Time</div>
+          <div class="panel-content">
+            <ul class="selection-list" id="time-list">
+              <!-- Rendered from JSON: 5 showtime slots -->
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live Selection Status -->
+      <div class="booking-summary-bar">
+        <div><strong>Movie:</strong> <span class="sum-movie">(None selected)</span></div>
+        <div><strong>Location:</strong> <span class="sum-loc">(None selected)</span></div>
+        <div><strong>Seats:</strong> <span class="sum-seats">(None selected)</span></div>
+        <div><strong>Time:</strong> <span class="sum-time">(None selected)</span></div>
+      </div>
+
+      <!-- Step 2 Bottom Actions -->
+      <div class="step-actions">
+        <button type="button" class="wireframe-btn" id="btn-back-step1">&larr; Back to Movies</button>
+        <button type="button" class="wireframe-btn primary" id="btn-to-step3">Next: Login &amp; Payment &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- STEP 3: Login & Payment Details (Cart Checkout)-->
+    <!-- ============================================== -->
+    <section class="step-view" data-step="3" id="step-3">
+      <div class="two-column-layout">
+
+        <!-- Left Panel: Login -->
+        <div class="wireframe-panel">
+          <div class="panel-title">Login</div>
+          <div class="panel-content">
+            <div class="form-group">
+              <label class="form-label" for="login-username">Email / Username</label>
+              <input type="text" id="login-username" class="wireframe-input" placeholder="user@cineplex.ca">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="login-password">Password</label>
+              <input type="password" id="login-password" class="wireframe-input" placeholder="••••••••">
+            </div>
+
+            <!-- Login full-width button from sketch -->
+            <button type="button" class="btn-login-action" id="btn-login">Login</button>
+          </div>
+        </div>
+
+        <!-- Right Panel: Payment Details -->
+        <div class="wireframe-panel">
+          <div class="panel-title">Payment Details</div>
+          <div class="panel-content">
+            <!-- Top row: 2 inputs side-by-side -->
+            <div class="payment-top-row">
+              <div>
+                <label class="form-label" for="pay-expiry">Expiry Date</label>
+                <input type="text" id="pay-expiry" class="wireframe-input" placeholder="MM / YY">
+              </div>
+              <div>
+                <label class="form-label" for="pay-cvv">CVV</label>
+                <input type="text" id="pay-cvv" class="wireframe-input" placeholder="•••">
+              </div>
+            </div>
+
+            <!-- Full width input below -->
+            <div class="form-group">
+              <label class="form-label" for="pay-card">Card Number</label>
+              <input type="text" id="pay-card" class="wireframe-input" placeholder="•••• •••• •••• ••••">
+            </div>
+
+            <!-- Shopping Cart Checkout button from sketch -->
+            <button type="button" class="btn-cart-checkout" id="btn-cart-checkout" title="Proceed to Checkout">
+              <span class="cart-icon">🛒</span>
+              <span>Checkout</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Booking Summary Status -->
+      <div class="booking-summary-bar">
+        <div><strong>Movie:</strong> <span class="sum-movie">(None selected)</span></div>
+        <div><strong>Location:</strong> <span class="sum-loc">(None selected)</span></div>
+        <div><strong>Seats:</strong> <span class="sum-seats">(None selected)</span></div>
+        <div><strong>Time:</strong> <span class="sum-time">(None selected)</span></div>
+      </div>
+
+      <!-- Confirmation Output Box -->
+      <div class="confirmation-box" id="confirmation-box">
+        <h3>Order Confirmed!</h3>
+        <p>Thank you for testing the prototype.</p>
+        <div id="confirmation-details" style="margin-top: 10px; font-size: 13px;"></div>
+      </div>
+
+      <!-- Step 3 Bottom Actions -->
+      <div class="step-actions">
+        <button type="button" class="wireframe-btn" id="btn-back-step2">&larr; Back to Seats &amp; Time</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==================================================================== -->
+  <!-- USABILITY ANALYTICS MODAL DIALOG                                     -->
+  <!-- ==================================================================== -->
+  <div class="analytics-modal-backdrop" id="analytics-modal" style="display: none;">
+    <div class="analytics-modal-content">
+      <div class="analytics-modal-header">
+        <h2>📊 Usability Testing Analytics &amp; Results</h2>
+        <button type="button" class="btn-modal-close" id="btn-close-analytics" title="Close">&times;</button>
+      </div>
+
+      <div class="analytics-modal-body">
+        <!-- Overview Stat Cards -->
+        <div class="analytics-stats-grid" id="analytics-stats-grid">
+          <!-- Populated by js/analytics.js -->
+        </div>
+
+        <!-- Participant Test Runs Table -->
+        <div class="analytics-section-title">Participant Test Sessions</div>
+
+        <div class="empty-data-msg" id="analytics-empty-msg">
+          No test sessions recorded yet. Run tests with participants or click <strong>"Load 4 Sample Users"</strong> below to preview the analytics.
+        </div>
+
+        <div class="analytics-table-container" id="analytics-table-wrapper" style="display: none;">
+          <table class="analytics-table">
+            <thead>
+              <tr>
+                <th>Participant</th>
+                <th>Total Time</th>
+                <th>Step 1</th>
+                <th>Step 2</th>
+                <th>Step 3</th>
+                <th>Movie</th>
+                <th>Location</th>
+                <th>Seats</th>
+                <th>Time</th>
+                <th>Timeline</th>
+              </tr>
+            </thead>
+            <tbody id="analytics-table-body">
+              <!-- Populated by js/analytics.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detailed Action Timeline View -->
+        <div class="action-timeline-view" id="action-timeline-view">
+          <div class="action-timeline-header">
+            <span class="action-timeline-title" id="timeline-title">Actions Timeline</span>
+          </div>
+          <ul class="timeline-list" id="timeline-list">
+            <!-- Populated by js/analytics.js -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modal Footer Toolbar -->
+      <div class="analytics-modal-footer">
+        <div class="footer-actions-left">
+          <button type="button" class="btn-testing btn-testing-primary" id="btn-export-csv">
+            ⬇ Export CSV (Excel)
+          </button>
+          <button type="button" class="btn-testing" id="btn-export-json">
+            ⬇ Export JSON
+          </button>
+          <button type="button" class="btn-testing" id="btn-load-sample">
+            Load 4 Sample Users
+          </button>
+        </div>
+        <div class="footer-actions-right">
+          <button type="button" class="btn-testing" id="btn-clear-analytics" style="color: #b00020;">
+            Clear All Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
